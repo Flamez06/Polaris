@@ -54,7 +54,7 @@ def login():
         if username not in data['users'] or data["users"][username][0]!=password:
             error = 'Invalid credentials'
             return render_template('login.html', error=error)
-        return redirect(url_for('profile', username=username))
+        return redirect(url_for('profile'))
     return render_template('login.html')
 
 # User profile page - display user's tweets and allow posting new tweets
@@ -70,7 +70,7 @@ def profile():
             save_data(data)
         return render_template('profile.html', username=username, tweets=user_tweets)
    except:
-       return "ACCESS DENIED. PLEASE LOGIN TO REACH THIS PAGE."
+       return render_template('error.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
