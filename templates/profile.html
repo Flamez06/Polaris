@@ -7,12 +7,12 @@
     <h1>Welcome, {{ username }}!</h1>
     <h2>Your Tweets:</h2>
     <ul>
-        {% for tweet in tweets %}
-            <li>{{ tweet.tweet }}</li>
+        {% for x in tweets %}
+            <li>{{x}}</li>
         {% endfor %}
     </ul>
     <h2>Post a New Tweet:</h2>
-    <form method="POST" action="{{ url_for('profile', username=username) }}">
+    <form method="POST">
         <textarea name="tweet" rows="3" cols="50" required></textarea><br><br>
         <input type="submit" value="Post Tweet">
     </form>

@@ -6,8 +6,8 @@
 <body>
     <h1>Tweets</h1>
     <ul>
-        {% for tweet in tweets %}
-            <li>{{ tweet.username }}: {{ tweet.tweet }}</li>
+        {% for x in tweets %}
+            <li>{{ x[0] }}: {{ x[1] }}</li>
         {% endfor %}
     </ul>
 </body>
