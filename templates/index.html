@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter-like App</title>
+</head>
+<body>
+    <h1>Tweets</h1>
+    <ul>
+        {% for tweet in tweets %}
+            <li>{{ tweet.username }}: {{ tweet.tweet }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
