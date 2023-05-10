@@ -11,7 +11,7 @@ body {
     background-color: #222222;
     color: #ffffff;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1.25fr 3fr 0fr;
     height: 100vh;
     overflow: hidden;
 }
@@ -119,6 +119,12 @@ a, a:hover {
     background-color: rgb(29, 161, 242);
     color: #ffffff;
     font-family: inherit;
+
+}
+h2{
+    padding: 1.5rem 0rem 1.5rem 3rem;
+    border-bottom: 1px solid #ffffff38 ;
+    font-size: 0.75cm;
 
 }
 .nav-link{

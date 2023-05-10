@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Profile</title>
-    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="../static/account.css">
 </head>
 <body>
 
@@ -10,27 +10,18 @@
         <h1>Polaris</h1>
         <div class="nav-link"><a href="/">Home</a></div>
 
-        {% if user == '' %}
-        <div class="nav-link"><a href="/login">Login</a></div>
-        {% else %}
-        <div class="nav-link"><a href="/account">Account</a></div>
-        {% endif %}
-
     </div>
     <div class="posts-container">
-
+        <h2>{{user}}'s posts</h2>
         {% for x in tweets %}
 
-        {% if user == x[0] %}
         <div class="post">
             <div class="post-author">
-                <img class="post-avatar" src="{{ x[2] }}" alt="">
-                <div class="post-user"><a href="./profile/{{ x[0] }}"> {{ x[0] }} </a></div>
+                <img class="post-avatar" src="{{pfp}}" alt="">
+                <div class="post-user"><a href="./profile/{{user}}"> {{user}} </a></div>
             </div>
-            <div class="post-content">{{ x[1] }}</div>
+            <div class="post-content">{{x}}</div>
         </div>
-        {% endif %}
-
         {% endfor %}
 
     </div>

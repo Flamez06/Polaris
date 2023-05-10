@@ -74,29 +74,22 @@ def login():
 def account():
     try:
         data = load_data()
-        user_tweets = data['tweets'][::-1]
-        # if request.method == 'POST':
-        #     tweet = request.form['tweet']
-        #     data['tweets'].append([USERNAME, tweet])
-        #     data['users'][USERNAME].append(tweet)
-        #     save_data(data)
-        return render_template('account.html', user=USERNAME, tweets=user_tweets)
+        print(data)
+        user_tweets = data['users'][USERNAME][2:]
+        img=data['users'][USERNAME][1]
+        return render_template('account.html', user=USERNAME, tweets=user_tweets[::-1],pfp=img)
     except:
-        return render_template('error.html')
+        return render_template("error.html")
+    
 
 @app.route('/profile/<user>', methods=['GET', 'POST'])
 def profile(user):
-    try:
+
         data = load_data()
-        user_tweets = data['tweets'][::-1]
-        # if request.method == 'POST':
-        #     tweet = request.form['tweet']
-        #     data['tweets'].append([user, tweet])
-        #     data['users'][user].append(tweet)
-        #     save_data(data)
-        return render_template('profile.html', user=user , tweets=user_tweets)
-    except:
-        return render_template('error.html')
+        user_tweets = data['users'][user][2:]
+        img=data['users'][user][1]
+        return render_template('profile.html', user=user , tweets=user_tweets[::-1],pfp=img)
+   
 
 if __name__ == '__main__':
     app.run(debug=True)
