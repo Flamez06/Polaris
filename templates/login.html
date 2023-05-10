@@ -2,17 +2,24 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="/static/login.css">
 </head>
 <body>
-    <h1>Login</h1>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
-    <form method="POST" action="{{ url_for('login') }}">
-        <input type="text" id="username" name="username" required placeholder="Enter username"><br><br>
-        <input type="password" name="password" id="password" required placeholder="Enter the password"><br><br>
-        <input type="submit" value="Login">
-    </form>
-    <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+    <div class="container">
+    <div class="form">
+        <h1>Welcome back!</h1>
+        <form method="POST" action="{{ url_for('login') }}">
+            <input type="text" class="input" name="username" required placeholder="Enter username">
+            <input type="password" name="password" class="input" required placeholder="Enter the password"><br><br>
+            <input type="submit" id="login" value="Log in">
+        </form>
+        {% if error %}
+            <p style="color: red; margin-top: 20px;">{{ error }}</p>
+        {% endif %}
+    </div>
+    <div class="img">
+        <img src="/static/Images/Ellipse 3.png" width="125" style="transform: scaleX(-1);" alt="">
+    </div>
+    </div>
 </body>
 </html>

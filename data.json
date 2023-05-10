@@ -1,11 +1,38 @@
 {
-  "users": {
-    "flamez06": ["sheesh", "../static/Images/default.png", "wdw", "im dumb"],
-    "retard": ["bhutta", "../static/Images/default.png", "hello guyz\r\n"]
-  },
-  "tweets": [
-    ["flamez06", "wdw", "../static/Images/default.png"],
-    ["flamez06", "im dumb", "../static/Images/default.png"],
-    ["retard", "hello gayz\r\n", "../static/Images/default.png"]
-  ]
+    "users": {
+        "flamez06": [
+            "sheesh",
+            "../static/Images/default.png",
+            "wdw",
+            "im dumb",
+            "dwdwwd"
+        ],
+        "retard": [
+            "bhutta",
+            "../static/Images/default.png",
+            "hello guyz\r\n"
+        ]
+    },
+    "tweets": [
+        [
+            "flamez06",
+            "wdw",
+            "../static/Images/default.png"
+        ],
+        [
+            "flamez06",
+            "im dumb",
+            "../static/Images/default.png"
+        ],
+        [
+            "retard",
+            "hello gayz",
+            "../static/Images/default.png"
+        ],
+        [
+            "flamez06",
+            "dwdwwd",
+            "../static/Images/default.png"
+        ]
+    ]
 }
