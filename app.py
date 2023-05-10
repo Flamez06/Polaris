@@ -30,9 +30,9 @@ def home():
 
     if request.method == 'POST':
         tweet = request.form['tweet']
-        data['tweets'].append([USERNAME, tweet, data['users'][USERNAME][1]])
-        data['users'][USERNAME].append(tweet)
-        save_data(data)
+        data['tweets'].append([USERNAME, tweet, data['users'][USERNAME][1], []])
+        data['users'][USERNAME].append([tweet, []])
+        save_data(data) 
 
     if not USERNAME == '':
         return render_template('index.html', tweets=data['tweets'][::-1], user=USERNAME, pfp=data['users'][USERNAME][1])

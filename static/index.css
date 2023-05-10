@@ -122,13 +122,62 @@ a, a:hover {
     font-family: inherit;
 
 }
+
+#logo-container {
+    border-bottom: 1px solid #ffffff38;
+}
+
 .nav-link{
     padding: 2rem;
-    font-size: 1.75rem;
+    padding-left: 3rem;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
+    justify-content: start;
     border-bottom: 1px solid #ffffff38;
-    border-top: 1px solid #ffffff38;
-    width: 307.2px;
+    /* border-top: 1px solid #ffffff38; */
+    width: 100%;
     margin: 0;
+}
+
+
+.fa-solid {
+    font-size: 1.5rem;
+    padding-right: 1rem;
+    margin-bottom: 3px;
+}
+
+
+.nav-link > img {
+    height: 40px;
+    width: 40px;
+    aspect-ratio: initial;
+}
+
+.post-reactions {
+    display: flex;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+.post-reactions > * > button {
+    background: transparent;
+    color: inherit;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px 10px 0;
+    font-size: inherit;
+}
+
+.post-reactions > * > p {
+    padding: 10px 0 10px ;
+
+}
+
+.post-reactions > * {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
 }

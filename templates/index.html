@@ -4,30 +4,37 @@
 <head>
     <title>Polaris</title>
     <link rel="stylesheet" href="../static/index.css">
+    <script src="https://kit.fontawesome.com/52a4234966.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="nav-bar">
-        <div style=" padding: 2rem 2rem 1rem 2rem">
-        <img src="/static/Images/logo.png" width="230" alt="">  
+        <div id="logo-container" style=" padding: 2rem">
+            <img src="/static/Images/logo.png" width="230" alt="">
         </div>
         {% if user == '' %}
         <div class="nav-link">
-            <img src="/static/Images/login.png" style="margin-right: 10px" width="50" alt="">
-            <a href="/login">Login</a>
+            <a href="/login">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </a>
         </div>
         <div class="nav-link">
-            <img src="/static/Images/register.png" style="margin-right: 10px" width="50" alt="">
-            <a href="/register">Register</a>
+            <a href="/register">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Register
+            </a>
         </div>
 
         {% else %}
         <div class="nav-link">
-            <img src="/static/Images/user.png"  style="margin-right: 10px" width="50" alt="">
-            <a href="/account">Profile</a>
+            <a href="/account">
+                <i class="fa-solid fa-user"></i>
+                Profile
+            </a>
         </div>
         {% endif %}
-        
+
     </div>
     <div class="posts-container">
 
@@ -52,15 +59,25 @@
                 <div class="post-user"><a href="./profile/{{ x[0] }}"> {{ x[0] }} </a></div>
             </div>
             <div class="post-content">{{ x[1] }}</div>
+            <div class="post-reactions">
+                <div class="post-like">
+                    
+                    <button>
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                    <p class="post-like-count">{{ x[3]|length }}</p>
+                    
+                </div>
+            </div>
         </div>
         {% endfor %}
     </div>
     <div class="profile-bar"></div>
 </body>
-<script>
-    if ( window.history.replaceState ) {
-      window.history.replaceState( null, null, window.location.href );
+<!-- <script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
     }
-</script>
+</script> -->
 
 </html>

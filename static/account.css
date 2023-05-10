@@ -129,10 +129,23 @@ h2{
 }
 .nav-link{
     padding: 2rem;
-    font-size: 1.75rem;
+    padding-left: 3rem;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
+    justify-content: start;
     border-bottom: 1px solid #ffffff38;
-    border-top: 1px solid #ffffff38;
-    width: 451.53px;
+    /* border-top: 1px solid #ffffff38; */
+    width: 100%;
+    margin: 0;
+}
+
+.fa-solid {
+    font-size: 1.5rem;
+    padding-right: 1rem;
+    margin-bottom: 3px;
+}
+
+#logo-container {
+    border-bottom: 1px solid #ffffff38;
 }

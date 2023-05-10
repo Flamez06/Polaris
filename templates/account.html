@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Profile</title>
     <link rel="stylesheet" href="../static/account.css">
+    <script src="https://kit.fontawesome.com/52a4234966.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
     <div class="nav-bar">
-        <div style=" padding: 2rem 2rem 1rem 2rem">
-        <img src="/static/Images/logo.png" width="230"  alt="">
+        <div id="logo-container" style=" padding: 2rem">
+            <img src="/static/Images/logo.png" width="230" alt="">
         </div>
         <div class="nav-link">
-            <img src="/static/Images/home.png" width="60" style="margin-right: 4px" alt="">
+            <i class="fa-solid fa-house"></i>
             <a href="/">Home</a>
         </div>
 
@@ -26,6 +29,9 @@
                 <div class="post-user"><a href="./profile/{{user}}"> {{user}} </a></div>
             </div>
             <div class="post-content">{{x}}</div>
+            <div class="post-reactions">
+                <div class="post-like"></div>
+            </div>
         </div>
         {% endfor %}
 
@@ -33,4 +39,5 @@
     <div class="profile-bar"></div>
 
 </body>
+
 </html>
