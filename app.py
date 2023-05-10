@@ -49,7 +49,7 @@ def register():
         if username in data['users']:
             error = 'Username already taken'
             return render_template('register.html', error=error)
-        data['users'][username] = [password]
+        data['users'][username] = [password,"../static/Images/default.png"]
         save_data(data)
         return redirect(url_for('login'))
     return render_template('register.html')
@@ -65,7 +65,6 @@ def login():
         if USERNAME not in data['users'] or data["users"][USERNAME][0] != password:
             error = 'Invalid credentials'
             return render_template('login.html', error=error)
-        print(USERNAME)
         return redirect(url_for('home'))
     return render_template('login.html')
 
@@ -74,7 +73,6 @@ def login():
 def account():
     try:
         data = load_data()
-        print(data)
         user_tweets = data['users'][USERNAME][2:]
         img=data['users'][USERNAME][1]
         return render_template('account.html', user=USERNAME, tweets=user_tweets[::-1],pfp=img)

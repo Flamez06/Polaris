@@ -8,15 +8,26 @@
 
 <body>
     <div class="nav-bar">
-        <img src="/static/logo.png" width="230px" style="padding-bottom: 20px;" alt="">
-        <div class="nav-link"><a href="/">Home</a></div>
-
+        <div style=" padding: 2rem 2rem 1rem 2rem">
+        <img src="/static/Images/logo.png" width="230" alt="">  
+        </div>
         {% if user == '' %}
-        <div class="nav-link"><a href="/login">Login</a></div>
-        {% else %}
-        <div class="nav-link"><a href="/account">Account</a></div>
-        {% endif %}
+        <div class="nav-link">
+            <img src="/static/Images/login.png" style="margin-right: 10px" width="50" alt="">
+            <a href="/login">Login</a>
+        </div>
+        <div class="nav-link">
+            <img src="/static/Images/register.png" style="margin-right: 10px" width="50" alt="">
+            <a href="/register">Register</a>
+        </div>
 
+        {% else %}
+        <div class="nav-link">
+            <img src="/static/Images/user.png"  style="margin-right: 10px" width="50" alt="">
+            <a href="/account">Profile</a>
+        </div>
+        {% endif %}
+        
     </div>
     <div class="posts-container">
 
@@ -46,5 +57,10 @@
     </div>
     <div class="profile-bar"></div>
 </body>
+<script>
+    if ( window.history.replaceState ) {
+      window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 
 </html>
