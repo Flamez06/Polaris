@@ -82,7 +82,6 @@ def account():
 
 @app.route('/profile/<user>', methods=['GET', 'POST'])
 def profile(user):
-
         data = load_data()
         user_tweets = data['users'][user][2:]
         img=data['users'][user][1]

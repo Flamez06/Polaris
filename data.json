@@ -15,11 +15,7 @@
             "okok",
             "../static/Images/default.png",
             "wow hello",
-            "hello",
-            [
-                "hello hello",
-                []
-            ]
+            "hello"
         ]
     },
     "tweets": [
