@@ -5,6 +5,7 @@
     <title>Polaris</title>
     <link rel="stylesheet" href="../static/index.css">
     <script src="https://kit.fontawesome.com/52a4234966.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -33,6 +34,13 @@
                 Profile
             </a>
         </div>
+        <div class="nav-link">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Log out
+            </a>
+        </div>
+        
         {% endif %}
 
     </div>
@@ -54,6 +62,15 @@
 
         {% for x in range(tweets|length) %}
         <div class="post">
+            <div class="delete">
+                {% if user!='' and tweets[x][0]==user %}
+                <form action="/delete" method="POST">
+                <button type="submit" name="{{tweet_keys[x]}}" id="del">
+                    <i class="fa-solid fa-delete-left" style="color: #ffffff;"></i>
+                </button>
+                </form>
+                {% endif %}
+            </div>
             <div class="post-author">
                 <img class="post-avatar" src="{{ tweets[x][2] }}" alt="">
                 <div class="post-user"><a href="./profile/{{ tweets[x][0] }}"> {{ tweets[x][0] }} </a></div>
@@ -70,6 +87,9 @@
                                 {% else %}
                                 <i class="fa-regular fa-heart"></i>
                                 {% endif %}
+                            {% else %}
+                            <i class="fa-regular fa-heart"></i>
+
 
                             {% endif %}
                         </button>
@@ -83,10 +103,10 @@
     </div>
     <div class="profile-bar"></div>
 </body>
-<!-- <script>
+ <script>
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
-</script> -->
+</script> 
 
 </html>

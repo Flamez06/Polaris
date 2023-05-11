@@ -13,12 +13,15 @@ def load_data():
         with open(DATABASE, 'r') as file:
             data = json.load(file)
     except FileNotFoundError:
-        data = {"users": {}, "tweets": []}
+        data = {"users": {}, "tweets": {}}
         with open(DATABASE, 'a')as f:
             json.dump(data, f)
     return data
 
 # Save data to the JSON file
+def karma(likes):
+    return likes*20
+
 def save_data(data):
     with open(DATABASE, 'w') as file:
         json.dump(data, file, indent=4)
@@ -35,6 +38,7 @@ def home():
 
     if request.method == 'POST':
         request_load = dict(request.form)
+        print(request_load)
 
         if "tweet" in request_load:
             tweet = request_load['tweet']
@@ -86,6 +90,12 @@ def login():
         return redirect(url_for('home'))
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    global USERNAME
+    USERNAME=''
+    return redirect(url_for('home'))
+
 # User profile page - display user's tweets and allow posting new tweets
 @app.route('/account', methods=['GET', 'POST'])
 def account():
@@ -94,6 +104,10 @@ def account():
         user_tweets = data['users'][USERNAME][2]
         img=data['users'][USERNAME][1]
         tweets_collection = data['tweets']
+        messages=data['users'][USERNAME][2]
+        likes=0
+        for i in messages:
+            likes+=len(data['tweets'][i][3])
 
         if request.method == 'POST':
             request_load = dict(request.form)
@@ -108,10 +122,18 @@ def account():
             
             save_data(data)
 
-        return render_template('profile.html', user=USERNAME, tweet_keys=data['users'][USERNAME][2] , tweets=user_tweets[::-1], data=tweets_collection, pfp=img)
+        return render_template('account.html', user=USERNAME, tweet_keys=data['users'][USERNAME][2] , tweets=user_tweets[::-1], data=tweets_collection, pfp=img,karma=karma(likes))
     except:
         return render_template("error.html")
     
+@app.route('/delete',methods=['POST'])
+def delete():
+        d=list((request.form).keys())[0]
+        data=load_data()
+        del data['tweets'][d]
+        data['users'][USERNAME][2].remove(d)
+        save_data(data)
+        return redirect(url_for('home'))
 
 @app.route('/profile/<user>', methods=['GET', 'POST'])
 def profile(user):
@@ -119,6 +141,10 @@ def profile(user):
         user_tweets = data['users'][user][2]
         img=data['users'][user][1]
         tweets_collection = data['tweets']
+        messages=data['users'][user][2]
+        likes=0
+        for i in messages:
+            likes+=len(data['tweets'][i][3])
 
         if request.method == 'POST':
             request_load = dict(request.form)
@@ -133,7 +159,7 @@ def profile(user):
             
             save_data(data)
 
-        return render_template('profile.html', user=user, tweet_keys=data['users'][user][2] , tweets=user_tweets[::-1], data=tweets_collection, pfp=img)
+        return render_template('profile.html', user=user, tweet_keys=data['users'][user][2] , tweets=user_tweets[::-1], data=tweets_collection, pfp=img,karma=karma(likes))
    
 
 if __name__ == '__main__':

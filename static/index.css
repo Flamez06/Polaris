@@ -181,3 +181,11 @@ a, a:hover {
     display: flex;
     align-items: center;
 }
+.delete{
+    margin-left: 97%;
+}
+#del{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}

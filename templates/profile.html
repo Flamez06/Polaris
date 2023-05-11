@@ -15,6 +15,41 @@
             <i class="fa-solid fa-house"></i>
             <a href="/">Home</a>
         </div>
+        <div class="nav-link" style="border-bottom: none;" >
+                <i class="fa-solid fa-star" style="color: #ffffff;"></i>
+                <p>Celestial points:</p> 
+                <p style="margin-left: 1rem;">
+                    {{karma}}
+                </p>      
+        </div>
+        <div class="badges" style="border-bottom: 1px solid #ffffff38; width: 100%; margin: 0;">   
+        {% if karma>=100 %}
+        <div style="margin-left: 3rem; margin-bottom: 3rem;"> 
+            {% if karma>=500 %}
+            <img src="/static/Images/badge5.png" width="100px"  alt="">
+            <img src="/static/Images/badge4.png" width="100px" alt="">
+            <img src="/static/Images/badge3.png" width="100px" alt="">
+            <img src="/static/Images/badge2.png" width="100px" alt="">
+            <img src="/static/Images/badge1.png" width="100px" alt="">
+            {% elif karma>=400 %}
+            <img src="/static/Images/badge4.png" width="100px" alt="">
+            <img src="/static/Images/badge3.png" width="100px" alt="">
+            <img src="/static/Images/badge2.png" width="100px" alt="">
+            <img src="/static/Images/badge1.png" width="100px" alt="">
+            {% elif karma>=300 %}
+            <img src="/static/Images/badge3.png" width="100px" alt="">
+            <img src="/static/Images/badge2.png" width="100px" alt="">
+            <img src="/static/Images/badge1.png" width="100px" alt="">
+            {% elif karma>=200 %}
+            <img src="/static/Images/badge2.png" width="100px" alt="">
+            <img src="/static/Images/badge1.png" width="100px" alt="">
+            {% elif karma>=100 %}
+            <img src="/static/Images/badge1.png" width="100px" alt="">
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        </div>
     </div>
     <div class="posts-container">
         
@@ -30,21 +65,8 @@
             <div class="post-content">{{ data[x][1] }}</div>
             <div class="post-reactions">
                 <div class="post-like">
-                    
-                    <form method="POST">
-                        <button type="submit" name="like-{{ x }}" value="❤️">
-                            {% if user != '' %}
-                                {% if user in data[x][3] %}
-                                <i class="fa-solid fa-heart"></i>
-                                {% else %}
-                                <i class="fa-regular fa-heart"></i>
-                                {% endif %}
-
-                            {% endif %}
-                        </button>
-                    </form>
+                    <i class="fa-regular fa-heart"></i>
                     <p class="post-like-count">{{ data[x][3]|length }}</p>
-                    
                 </div>
             </div>
         </div>
