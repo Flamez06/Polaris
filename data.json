@@ -3,33 +3,48 @@
         "flamez06": [
             "sheesh",
             "../static/Images/default.png",
-            "wdw",
-            "im dumb"
+            []
         ],
         "retard": [
             "bhutta",
             "../static/Images/default.png",
-            "hello guyz\r\n"
+            []
         ],
         "mavuhs": [
             "okok",
             "../static/Images/default.png",
-            "wow hello",
-            "hello"
+            [
+                "cDmie6bLKj",
+                "4kTkytZF8G",
+                "ZFohLwPgfo",
+                "kp8saH7DFH"
+            ]
         ]
     },
-    "tweets": [
-        [
+    "tweets": {
+        "cDmie6bLKj": [
             "mavuhs",
-            "hello",
+            "hello people of the pole",
             "../static/Images/default.png",
             []
         ],
-        [
+        "4kTkytZF8G": [
             "mavuhs",
-            "hello hello",
+            "kaaj korche?",
+            "../static/Images/default.png",
+            []
+        ],
+        "ZFohLwPgfo": [
+            "mavuhs",
+            "wow",
+            "../static/Images/default.png",
+            []
+        ],
+        "kp8saH7DFH": [
+            "mavuhs",
+            "hochche?",
             "../static/Images/default.png",
             []
         ]
-    ]
+    }
 }

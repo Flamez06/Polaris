@@ -46,26 +46,35 @@
                     <textarea name="tweet" rows="3" cols="50" required placeholder="type something here"></textarea>
                 </div>
                 <div class="create-post-button">
-                    <input id="submit-button" type="submit" value="Post">
+                    <input id="submit-button" name="new-tweet" type="submit" value="Post">
                 </div>
             </form>
         </div>
         {% endif %}
 
-        {% for x in tweets %}
+        {% for x in range(tweets|length) %}
         <div class="post">
             <div class="post-author">
-                <img class="post-avatar" src="{{ x[2] }}" alt="">
-                <div class="post-user"><a href="./profile/{{ x[0] }}"> {{ x[0] }} </a></div>
+                <img class="post-avatar" src="{{ tweets[x][2] }}" alt="">
+                <div class="post-user"><a href="./profile/{{ tweets[x][0] }}"> {{ tweets[x][0] }} </a></div>
             </div>
-            <div class="post-content">{{ x[1] }}</div>
+            <div class="post-content">{{ tweets[x][1] }}</div>
             <div class="post-reactions">
                 <div class="post-like">
                     
-                    <button>
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                    <p class="post-like-count">{{ x[3]|length }}</p>
+                    <form method="POST">
+                        <button type="submit" name="like-{{ tweet_keys[x] }}" value="❤️">
+                            {% if user != '' %}
+                                {% if user in tweets[x][3] %}
+                                <i class="fa-solid fa-heart"></i>
+                                {% else %}
+                                <i class="fa-regular fa-heart"></i>
+                                {% endif %}
+
+                            {% endif %}
+                        </button>
+                    </form>
+                    <p class="post-like-count">{{ tweets[x][3]|length }}</p>
                     
                 </div>
             </div>

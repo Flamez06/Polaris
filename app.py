@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-import json
+import json, random
 
 app = Flask(__name__)
 
@@ -23,21 +23,39 @@ def save_data(data):
     with open(DATABASE, 'w') as file:
         json.dump(data, file, indent=4)
 
+# used for assigin a random string to a post
+def random_string():
+    letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    return ''.join(random.choice(letters) for i in range(10))
+
 # Home page - display all tweets
 @app.route('/', methods=['GET', 'POST'])
 def home():
     data = load_data()
 
     if request.method == 'POST':
-        tweet = request.form['tweet']
-        data['tweets'].append([USERNAME, tweet, data['users'][USERNAME][1], []])
-        data['users'][USERNAME].append([tweet, []])
-        save_data(data) 
+        request_load = dict(request.form)
+
+        if "tweet" in request_load:
+            tweet = request_load['tweet']
+            id = random_string()
+            data['tweets'][id] = [USERNAME, tweet, data['users'][USERNAME][1], []]
+            data['users'][USERNAME][2].append(id)
+            
+        if "like" in list(request_load.keys())[0]:
+            id = list(request_load.keys())[0].split('-')[1]
+            if USERNAME != '':
+                if not USERNAME in data['tweets'][id][3]:
+                    data['tweets'][id][3].append(USERNAME)
+                else:
+                    data['tweets'][id][3].remove(USERNAME)
+        
+        save_data(data)
 
     if not USERNAME == '':
-        return render_template('index.html', tweets=data['tweets'][::-1], user=USERNAME, pfp=data['users'][USERNAME][1])
+        return render_template('index.html', tweet_keys=list(data['tweets'].keys())[::-1], tweets=list(data['tweets'].values())[::-1], user=USERNAME, pfp=data['users'][USERNAME][1])
     else:
-        return render_template('index.html', tweets=data['tweets'][::-1], user=USERNAME, pfp='')
+        return render_template('index.html', tweet_keys=list(data['tweets'].keys())[::-1], tweets=list(data['tweets'].values())[::-1], user=USERNAME, pfp='')
 
 # User registration
 @app.route('/register', methods=['GET', 'POST'])
@@ -49,7 +67,7 @@ def register():
         if username in data['users']:
             error = 'Username already taken'
             return render_template('register.html', error=error)
-        data['users'][username] = [password,"../static/Images/default.png"]
+        data['users'][username] = [password,"../static/Images/default.png", []]
         save_data(data)
         return redirect(url_for('login'))
     return render_template('register.html')
@@ -73,9 +91,24 @@ def login():
 def account():
     try:
         data = load_data()
-        user_tweets = data['users'][USERNAME][2:]
+        user_tweets = data['users'][USERNAME][2]
         img=data['users'][USERNAME][1]
-        return render_template('account.html', user=USERNAME, tweets=user_tweets[::-1],pfp=img)
+        tweets_collection = data['tweets']
+
+        if request.method == 'POST':
+            request_load = dict(request.form)
+
+            if "like" in list(request_load.keys())[0]:
+                id = list(request_load.keys())[0].split('-')[1]
+                if USERNAME != '':
+                    if not USERNAME in data['tweets'][id][3]:
+                        data['tweets'][id][3].append(USERNAME)
+                    else:
+                        data['tweets'][id][3].remove(USERNAME)
+            
+            save_data(data)
+
+        return render_template('profile.html', user=USERNAME, tweet_keys=data['users'][USERNAME][2] , tweets=user_tweets[::-1], data=tweets_collection, pfp=img)
     except:
         return render_template("error.html")
     
@@ -83,9 +116,24 @@ def account():
 @app.route('/profile/<user>', methods=['GET', 'POST'])
 def profile(user):
         data = load_data()
-        user_tweets = data['users'][user][2:]
+        user_tweets = data['users'][user][2]
         img=data['users'][user][1]
-        return render_template('profile.html', user=user , tweets=user_tweets[::-1],pfp=img)
+        tweets_collection = data['tweets']
+
+        if request.method == 'POST':
+            request_load = dict(request.form)
+
+            if "like" in list(request_load.keys())[0]:
+                id = list(request_load.keys())[0].split('-')[1]
+                if USERNAME != '':
+                    if not USERNAME in data['tweets'][id][3]:
+                        data['tweets'][id][3].append(USERNAME)
+                    else:
+                        data['tweets'][id][3].remove(USERNAME)
+            
+            save_data(data)
+
+        return render_template('profile.html', user=user, tweet_keys=data['users'][user][2] , tweets=user_tweets[::-1], data=tweets_collection, pfp=img)
    
 
 if __name__ == '__main__':

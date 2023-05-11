@@ -27,9 +27,25 @@
                 <img class="post-avatar" src="{{ pfp }}" alt="">
                 <div class="post-user"><a href="./profile/{{ user }}"> {{ user }} </a></div>
             </div>
-            <div class="post-content">{{ x }}</div>
+            <div class="post-content">{{ data[x][1] }}</div>
             <div class="post-reactions">
-                <div class="post-like"></div>
+                <div class="post-like">
+                    
+                    <form method="POST">
+                        <button type="submit" name="like-{{ x }}" value="❤️">
+                            {% if user != '' %}
+                                {% if user in data[x][3] %}
+                                <i class="fa-solid fa-heart"></i>
+                                {% else %}
+                                <i class="fa-regular fa-heart"></i>
+                                {% endif %}
+
+                            {% endif %}
+                        </button>
+                    </form>
+                    <p class="post-like-count">{{ data[x][3]|length }}</p>
+                    
+                </div>
             </div>
         </div>
         

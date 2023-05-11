@@ -140,7 +140,7 @@ h2{
     margin: 0;
 }
 
-.fa-solid {
+.fa-solid, .fa-regular {
     font-size: 1.5rem;
     padding-right: 1rem;
     margin-bottom: 3px;
@@ -148,4 +148,38 @@ h2{
 
 #logo-container {
     border-bottom: 1px solid #ffffff38;
+}
+
+.nav-link > img {
+    height: 40px;
+    width: 40px;
+    aspect-ratio: initial;
+}
+
+.post-reactions {
+    display: flex;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+.post-reactions button {
+    background: transparent;
+    color: inherit;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px 10px 0;
+    font-size: inherit;
+}
+
+.post-reactions > * > p {
+    padding: 10px 0 10px ;
+
+}
+
+.post-reactions > * {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
 }
