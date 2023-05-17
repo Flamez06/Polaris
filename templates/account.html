@@ -15,14 +15,15 @@
             <i class="fa-solid fa-house"></i>
             <a href="/">Home</a>
         </div>
+        <!-- FUTURE STUFF -->
         <div class="nav-link" style="border-bottom: none;">
             <i class="fa-solid fa-star" style="color: #ffffff;"></i>
-            <p>Celestial points</p> 
+            <p>Polar points</p> 
             <p style="margin-left: 1rem;">
                 {{karma}}
             </p>
-        </div>
-        <div class="badges" style="border-bottom: 1px solid #ffffff38; width: 100%; margin: 0;">   
+        </div> 
+         <div class="badges" style="border-bottom: 1px solid #ffffff38; width: 100%; margin: 0;">   
             {% if karma>=100 %}
             <div style="margin-left: 3rem; margin-bottom: 3rem;"> 
                 {% if karma>=500 %}
@@ -49,7 +50,7 @@
             </div>
             {% endif %}
             
-            </div>
+            </div> 
     </div>
     <div class="posts-container">
         
@@ -58,9 +59,16 @@
         
         
         <div class="post">
+            <div class="delete">
+                <form action="/delete" method="POST">
+                <button type="submit" name="{{x}} prof" id="del">
+                    <i class="fa-solid fa-delete-left" style="color: #ffffff;"></i>
+                </button>
+                </form>
+            </div>
             <div class="post-author">
                 <img class="post-avatar" src="{{ pfp }}" alt="">
-                <div class="post-user"><a href="./profile/{{ user }}"> {{ user }} </a></div>
+                <div class="post-user"> {{ user }}</div>
             </div>
             <div class="post-content">{{ data[x][1] }}</div>
             <div class="post-reactions">
@@ -75,7 +83,8 @@
         {% endfor %}
         
     </div>
-    <div class="profile-bar"></div>
+    <div class="profile-bar">
+    </div>
     
 </body>
 </html>

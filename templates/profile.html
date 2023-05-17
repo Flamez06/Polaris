@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Profile</title>
-    <link rel="stylesheet" href="../static/account.css">
+    <link rel="stylesheet" href="../static/profile.css">
     <script src="https://kit.fontawesome.com/52a4234966.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -14,10 +14,10 @@
         <div class="nav-link">
             <i class="fa-solid fa-house"></i>
             <a href="/">Home</a>
-        </div>
+        </div> 
         <div class="nav-link" style="border-bottom: none;" >
                 <i class="fa-solid fa-star" style="color: #ffffff;"></i>
-                <p>Celestial points:</p> 
+                <p>Polar points:</p> 
                 <p style="margin-left: 1rem;">
                     {{karma}}
                 </p>      
@@ -49,7 +49,7 @@
         </div>
         {% endif %}
         
-        </div>
+        </div> 
     </div>
     <div class="posts-container">
         
@@ -60,7 +60,7 @@
         <div class="post">
             <div class="post-author">
                 <img class="post-avatar" src="{{ pfp }}" alt="">
-                <div class="post-user"><a href="./profile/{{ user }}"> {{ user }} </a></div>
+                <div class="post-user"> {{ user }}</div>
             </div>
             <div class="post-content">{{ data[x][1] }}</div>
             <div class="post-reactions">
@@ -74,7 +74,12 @@
         {% endfor %}
         
     </div>
-    <div class="profile-bar"></div>
-    
+    <div class="profile-bar">
+        <div class="banner"></div>
+        <img class="avatar" src="{{ pfp }}" alt="">
+        <div class="about">
+            <h1>{{user}}</h1> 
+        </div>
+    </div>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <title>Polaris</title>
     <link rel="stylesheet" href="../static/index.css">
     <script src="https://kit.fontawesome.com/52a4234966.js" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 </head>
 
 <body>
@@ -48,7 +48,7 @@
 
         {% if user != '' %}
         <div class="create-post">
-            <form method="POST">
+            <form action="/post" method="POST">
                 <div class="create-post-box">
                     <img src="{{ pfp }}" alt="">
                     <textarea name="tweet" rows="3" cols="50" required placeholder="type something here"></textarea>
@@ -65,7 +65,7 @@
             <div class="delete">
                 {% if user!='' and tweets[x][0]==user %}
                 <form action="/delete" method="POST">
-                <button type="submit" name="{{tweet_keys[x]}}" id="del">
+                <button type="submit" name="{{tweet_keys[x]}} home" id="del">
                     <i class="fa-solid fa-delete-left" style="color: #ffffff;"></i>
                 </button>
                 </form>
@@ -78,24 +78,18 @@
             <div class="post-content">{{ tweets[x][1] }}</div>
             <div class="post-reactions">
                 <div class="post-like">
-                    
-                    <form method="POST">
-                        <button type="submit" name="like-{{ tweet_keys[x] }}" value="❤️">
+                        <button type="button" class="update_like" like="{{ tweet_keys[x] }}" value="❤️">
                             {% if user != '' %}
                                 {% if user in tweets[x][3] %}
-                                <i class="fa-solid fa-heart"></i>
+                                <i id="licon{{tweet_keys[x]}}" class="fa-solid fa-heart"></i>
                                 {% else %}
-                                <i class="fa-regular fa-heart"></i>
+                                <i id="licon{{tweet_keys[x]}}" class="fa-regular fa-heart"></i>
                                 {% endif %}
                             {% else %}
                             <i class="fa-regular fa-heart"></i>
-
-
                             {% endif %}
                         </button>
-                    </form>
-                    <p class="post-like-count">{{ tweets[x][3]|length }}</p>
-                    
+                    <p class="post-like-count" id="postlike{{tweet_keys[x]}}">{{ tweets[x][3]|length }}</p>
                 </div>
             </div>
         </div>
@@ -107,6 +101,29 @@
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
+
+    jQuery(document).ready(function(){
+        jQuery('.update_like').bind('click',function(){
+            var like=jQuery(this).attr('like')
+            req=jQuery.ajax({
+                url:"/",
+                type:"POST",
+                data:{id:like}
+            })
+            req.done(function(data){
+                jQuery('#postlike'+like).text(data.count)
+                const icon=document.querySelector('#licon'+like)
+                if(icon.className=="fa-solid fa-heart"){
+                    icon.className="fa-regular fa-heart"
+                }
+                else{
+                    icon.className="fa-solid fa-heart"
+                }   
+            })
+        })
+    })
+
+
 </script> 
 
 </html>

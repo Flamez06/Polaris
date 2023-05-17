@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,jsonify
 import json, random
 
 app = Flask(__name__)
@@ -31,30 +31,35 @@ def random_string():
     letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
     return ''.join(random.choice(letters) for i in range(10))
 
+
+
+@app.route('/post',methods=['POST'])
+def post():
+     data=load_data()
+     request_load=request.form
+     tweet = request_load['tweet']
+     id = random_string()
+     data['tweets'][id] = [USERNAME, tweet, data['users'][USERNAME][1], []]
+     data['users'][USERNAME][2].append(id)
+     save_data(data)
+     return redirect(url_for('home'))
+
+
 # Home page - display all tweets
 @app.route('/', methods=['GET', 'POST'])
 def home():
     data = load_data()
 
     if request.method == 'POST':
-        request_load = dict(request.form)
-        print(request_load)
-
-        if "tweet" in request_load:
-            tweet = request_load['tweet']
-            id = random_string()
-            data['tweets'][id] = [USERNAME, tweet, data['users'][USERNAME][1], []]
-            data['users'][USERNAME][2].append(id)
-            
-        if "like" in list(request_load.keys())[0]:
-            id = list(request_load.keys())[0].split('-')[1]
-            if USERNAME != '':
+        id = request.form['id']
+        if USERNAME != '':
                 if not USERNAME in data['tweets'][id][3]:
                     data['tweets'][id][3].append(USERNAME)
                 else:
                     data['tweets'][id][3].remove(USERNAME)
         
         save_data(data)
+        return jsonify({ 'count':len(data['tweets'][id][3])  })
 
     if not USERNAME == '':
         return render_template('index.html', tweet_keys=list(data['tweets'].keys())[::-1], tweets=list(data['tweets'].values())[::-1], user=USERNAME, pfp=data['users'][USERNAME][1])
@@ -129,11 +134,16 @@ def account():
 @app.route('/delete',methods=['POST'])
 def delete():
         d=list((request.form).keys())[0]
+        x=d.split()[1]
+        d=d.split()[0]
         data=load_data()
         del data['tweets'][d]
         data['users'][USERNAME][2].remove(d)
         save_data(data)
-        return redirect(url_for('home'))
+        if x=="prof":
+            return redirect(url_for('account'))
+        else:
+            return redirect(url_for('home'))
 
 @app.route('/profile/<user>', methods=['GET', 'POST'])
 def profile(user):
@@ -156,7 +166,6 @@ def profile(user):
                         data['tweets'][id][3].append(USERNAME)
                     else:
                         data['tweets'][id][3].remove(USERNAME)
-            
             save_data(data)
 
         return render_template('profile.html', user=user, tweet_keys=data['users'][user][2] , tweets=user_tweets[::-1], data=tweets_collection, pfp=img,karma=karma(likes))
