@@ -13,7 +13,7 @@
         <div id="logo-container" style=" padding: 2rem">
             <img src="/static/Images/logo.png" width="230" alt="">
         </div>
-        {% if user == '' %}
+        {% if 'user' not in session %}
         <div class="nav-link">
             <a href="/login">
                 <i class="fa-solid fa-right-to-bracket"></i>
@@ -42,11 +42,17 @@
         </div>
         
         {% endif %}
+        <div class="nav-link">
+            <a href="/landing">
+                <i class="fa-regular fa-address-card" style="color: #ffffff;"></i>
+                About
+            </a>
+        </div>
 
     </div>
     <div class="posts-container">
 
-        {% if user != '' %}
+        {% if "user" in session %}
         <div class="create-post">
             <form action="/post" method="POST">
                 <div class="create-post-box">
@@ -63,7 +69,7 @@
         {% for x in range(tweets|length) %}
         <div class="post">
             <div class="delete">
-                {% if user!='' and tweets[x][0]==user %}
+                {% if 'user' in session and tweets[x][0]==user %}
                 <form action="/delete" method="POST">
                 <button type="submit" name="{{tweet_keys[x]}} home" id="del">
                     <i class="fa-solid fa-delete-left" style="color: #ffffff;"></i>
@@ -73,13 +79,17 @@
             </div>
             <div class="post-author">
                 <img class="post-avatar" src="{{ tweets[x][2] }}" alt="">
+                {% if user==tweets[x][0] %}
+                <div class="post-user"> {{ tweets[x][0] }} </a></div>
+                {% else %}
                 <div class="post-user"><a href="./profile/{{ tweets[x][0] }}"> {{ tweets[x][0] }} </a></div>
+                {% endif %}
             </div>
             <div class="post-content">{{ tweets[x][1] }}</div>
             <div class="post-reactions">
                 <div class="post-like">
                         <button type="button" class="update_like" like="{{ tweet_keys[x] }}" value="❤️">
-                            {% if user != '' %}
+                            {% if 'user' in session %}
                                 {% if user in tweets[x][3] %}
                                 <i id="licon{{tweet_keys[x]}}" class="fa-solid fa-heart"></i>
                                 {% else %}

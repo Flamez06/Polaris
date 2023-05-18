@@ -4,9 +4,9 @@
             "sheesh",
             "../static/Images/default.png",
             [
-                "CgoJ135zUm",
-                "HLuTUtcRGa",
-                "j3WQ4dPu9t"
+                "UmxGl0xwiO",
+                "OWZB6Qr5lO",
+                "9FqTQXzOgE"
             ]
         ],
         "mavuhs": [
@@ -18,28 +18,34 @@
         ]
     },
     "tweets": {
-        "CgoJ135zUm": [
-            "flamez06",
-            "heheh",
-            "../static/Images/default.png",
-            []
-        ],
-        "HLuTUtcRGa": [
-            "flamez06",
-            "im autistic",
-            "../static/Images/default.png",
-            []
-        ],
-        "j3WQ4dPu9t": [
-            "flamez06",
-            "fefe",
-            "../static/Images/default.png",
-            []
-        ],
         "Owg3cNfyB3": [
             "mavuhs",
             "bitch smd",
             "../static/Images/default2.png",
+            [
+                "flamez06"
+            ]
+        ],
+        "UmxGl0xwiO": [
+            "flamez06",
+            "fefefef",
+            "../static/Images/default.png",
+            [
+                "flamez06"
+            ]
+        ],
+        "OWZB6Qr5lO": [
+            "flamez06",
+            "ddwdwd",
+            "../static/Images/default.png",
+            [
+                "flamez06"
+            ]
+        ],
+        "9FqTQXzOgE": [
+            "flamez06",
+            "hehe",
+            "../static/Images/default.png",
             []
         ]
     }

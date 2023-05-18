@@ -208,3 +208,14 @@ h2{
     bottom: 35px;
     padding: 20px;
 }
+.delete{
+    margin-left: 97%;
+}
+#del{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+.post{
+    padding-top: 30px;
+}
