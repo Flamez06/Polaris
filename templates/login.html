@@ -12,6 +12,8 @@
         <form method="POST" action="{{ url_for('login') }}">
             <input type="text" class="input" name="username" autocomplete="off" required placeholder="Enter username">
             <input type="password" name="password" class="input" required placeholder="Enter the password"><br><br>
+            <input type="checkbox" name="rem" value="remember"> 
+            <label class="input" for="rem">Remember me</label>
             <input type="submit" id="login" value="Log in">
         </form>
         {% if error %}

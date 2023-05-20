@@ -205,7 +205,7 @@ h2{
     border-radius: 10px;
     background-color: #786a6a38;
     position: relative;
-    bottom: 35px;
+    bottom: 50px;
     padding: 20px;
 }
 .delete{
@@ -218,4 +218,66 @@ h2{
 }
 .post{
     padding-top: 30px;
+}
+.edp{
+    width: 120px;
+    height: 40px;
+    background-color:  rgb(138, 138, 224);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: medium;
+    border: none;
+    cursor: pointer;
+}
+.edp:hover{
+    background-color: rgb(107, 107, 198) ;
+}
+#opm{
+    position: relative;
+    bottom:80px;
+    left: 215px;
+}
+#cm{
+    background: transparent;
+    border: none;
+    position: relative;
+    bottom: 165px;
+    left: 20px;
+    cursor: pointer;
+}
+.modal{
+    width: 650px;
+    height: 450px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color:#222222;
+    padding: 2rem;
+    z-index: 1;
+}
+.modal::backdrop{
+    background: black;
+    opacity: 0.75;
+}
+#upabout{
+    background: transparent;
+    border: solid #444242 2px;
+    color: white;
+    font-family:  'Nunito', sans-serif;
+    resize: none;
+    padding: 20px;
+    font-size: large;
+    margin: 10px;
+}
+#upabout:focus{
+    outline:none;
+}
+input[type="file"] {
+    display: none;
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }

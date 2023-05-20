@@ -4,28 +4,18 @@
             "sheesh",
             "../static/Images/default.png",
             [
-                "UmxGl0xwiO",
-                "OWZB6Qr5lO",
-                "9FqTQXzOgE"
+                "UmxGl0xwiO"
             ]
         ],
         "mavuhs": [
             "okok",
             "../static/Images/default2.png",
             [
-                "Owg3cNfyB3"
+                "NnOMLK9bmH"
             ]
         ]
     },
     "tweets": {
-        "Owg3cNfyB3": [
-            "mavuhs",
-            "bitch smd",
-            "../static/Images/default2.png",
-            [
-                "flamez06"
-            ]
-        ],
         "UmxGl0xwiO": [
             "flamez06",
             "fefefef",
@@ -34,18 +24,10 @@
                 "flamez06"
             ]
         ],
-        "OWZB6Qr5lO": [
-            "flamez06",
-            "ddwdwd",
-            "../static/Images/default.png",
-            [
-                "flamez06"
-            ]
-        ],
-        "9FqTQXzOgE": [
-            "flamez06",
-            "hehe",
-            "../static/Images/default.png",
+        "NnOMLK9bmH": [
+            "mavuhs",
+            "efewdw",
+            "../static/Images/default2.png",
             []
         ]
     }

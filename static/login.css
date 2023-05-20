@@ -20,7 +20,7 @@ h1{
     margin-left: 25px;
 }
 .container{
-    height: 375px;
+    height: 400px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -49,6 +49,7 @@ h1{
     background-color: rgb(138, 138, 224);
     color: white;
     cursor: pointer;
+    margin-top: 10px;
 }
 #login:hover{
     background-color: rgb(107, 107, 198) ;

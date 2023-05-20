@@ -95,8 +95,13 @@ def login():
             if USERNAME not in data['users'] or data["users"][USERNAME][0] != password:
                 error = 'Invalid credentials'
                 return render_template('login.html', error=error)
-            session.permanent=True
-            session["user"]=USERNAME
+            try :
+                check=request.form['rem']
+                if check=="remember":
+                    session.permanent=True
+                    session["user"]=USERNAME
+            except:
+                session["user"]=USERNAME
             return redirect(url_for('home'))
         return render_template('login.html')
     else:
@@ -104,7 +109,7 @@ def login():
 
 @app.route('/logout')
 def logout():
-    session.pop("user",None)
+    session.clear()
     return redirect(url_for('home'))
 
 # User profile page - display user's tweets and allow posting new tweets

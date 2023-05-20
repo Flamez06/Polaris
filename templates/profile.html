@@ -10,19 +10,31 @@
     <div class="nav-bar">
         <div id="logo-container" style="padding: 2rem">
             <img src="/static/Images/logo.png" width="230"  alt="">
-            </div>
+        </div>
         <div class="nav-link">
             <i class="fa-solid fa-house"></i>
             <a href="/">Home</a>
         </div> 
-        <div class="nav-link" style="border-bottom: none;" >
+        <!-- <div class="nav-link" style="border-bottom: none;" >
                 <i class="fa-solid fa-star" style="color: #ffffff;"></i>
                 <p>Polar points:</p> 
                 <p style="margin-left: 1rem;">
                     {{karma}}
                 </p>      
+        </div> -->
+        <div class="nav-link">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Log out
+            </a>
         </div>
-        <div class="badges" style="border-bottom: 1px solid #ffffff38; width: 100%; margin: 0;">   
+        <div class="nav-link">
+            <a href="/landing">
+                <i class="fa-regular fa-address-card" style="color: #ffffff;"></i>
+                About
+            </a>
+        </div>
+        <!-- <div class="badges" style="border-bottom: 1px solid #ffffff38; width: 100%; margin: 0;">   
         {% if karma>=100 %}
         <div style="margin-left: 3rem; margin-bottom: 3rem;"> 
             {% if karma>=500 %}
@@ -48,8 +60,7 @@
             {% endif %}
         </div>
         {% endif %}
-        
-        </div> 
+         -->
     </div>
     <div class="posts-container">
         

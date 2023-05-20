@@ -7,23 +7,49 @@
 </head>
 <body>
 
+    <dialog class="modal">
+        <div class="wrapper">
+        <form action="" method="POST">
+            <label>
+            <input type="file">
+            <img src="{{pfp}}" id="pimg" style="height: 100px;width: 100px; border-radius: 100px; border: 2px solid  #ffffff38 ;">
+            </label>
+            <textarea name="desc" id="upabout" cols="40" rows="5"></textarea>
+            <input type="submit" class='edp' value="Save changes">
+        </form>
+        <button id="cm"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i></button>
+        </div>
+    </dialog>
+
     <div class="nav-bar">
         <div id="logo-container" style="padding: 2rem">
             <img src="/static/Images/logo.png" width="230"  alt="">
-            </div>
+        </div>
         <div class="nav-link">
             <i class="fa-solid fa-house"></i>
             <a href="/">Home</a>
         </div>
         <!-- FUTURE STUFF -->
-        <div class="nav-link" style="border-bottom: none;">
+        <!-- <div class="nav-link" style="border-bottom: none;">
             <i class="fa-solid fa-star" style="color: #ffffff;"></i>
             <p>Polar points</p> 
             <p style="margin-left: 1rem;">
                 {{karma}}
             </p>
-        </div> 
-         <div class="badges" style="border-bottom: 1px solid #ffffff38; width: 100%; margin: 0;">   
+        </div>  -->
+        <div class="nav-link">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Log out
+            </a>
+        </div>
+        <div class="nav-link">
+            <a href="/landing">
+                <i class="fa-regular fa-address-card" style="color: #ffffff;"></i>
+                About
+            </a>
+        </div>
+         <!-- <div class="badges" style="border-bottom: 1px solid #ffffff38; width: 100%; margin: 0;">   
             {% if karma>=100 %}
             <div style="margin-left: 3rem; margin-bottom: 3rem;"> 
                 {% if karma>=500 %}
@@ -48,9 +74,8 @@
                 <img src="/static/Images/badge1.png" width="100px" alt="">
                 {% endif %}
             </div>
-            {% endif %}
+            {% endif %} -->
             
-            </div> 
     </div>
     <div class="posts-container">
         
@@ -84,7 +109,32 @@
         
     </div>
     <div class="profile-bar">
+        <div class="banner"></div>
+        <img class="avatar" src="{{ pfp }}" alt="">
+        <button class="edp" id="opm">Edit Profile</button>
+        <div class="about">
+            <h1>{{user}}</h1> 
+        </div>
     </div>
+
     
 </body>
+<script>
+    const openmodal=document.querySelector('#opm')
+    const closemodal=document.querySelector('#cm')
+    const modal=document.querySelector('.modal')
+    const pfp=document.querySelector('#pimg')
+    openmodal.addEventListener('click',()=>{
+        modal.showModal();
+    })
+    closemodal.addEventListener('click',()=>{
+        modal.close();
+    })
+    pfp.addEventListener('mouseover',()=>{
+        pfp.src="../static/Images/pfp.jpg"
+    })
+    pfp.addEventListener('mouseout',()=>{
+        pfp.src="{{pfp}}"
+    })
+</script>
 </html>
