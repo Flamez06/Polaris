@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&family=Montserrat:wght@500;600;700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Montserrat;
+    color: white;
+}
+body{
+    background: url(/static/Images/Frame\ 2.png);
+    background-size: cover;
+    height: 2500px;
+}
+*::-webkit-scrollbar {
+    display: none;
+}
+.nav-button{
+    background:none;
+    border:none;
+    padding: 10px 20px 10px 20px;
+    font-size: 30px;
+    font-weight: 600;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+.nav-button:hover{
+    transform: scale(1.15);
+}
+.navbar{
+    margin-top: 30px;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+.main_container{
+    margin-top: 360px;
+    position: relative;
+    right: 150px;
+}
+.text{
+    width: 600px;
+    font-size: 25px;
+}
+.rgbtext{
+    background-image: linear-gradient(93.2deg, #20bf55ff 0%, #12bd98ff 57%, #009ac6ff 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.rgb-button{
+    border: 3px solid transparent;
+    border-radius: 10px;
+    background: 
+      linear-gradient(to right, #1E1E1E, #1E1E1E), 
+      linear-gradient(93.2deg, #20bf55ff 0%, #12bd98ff 57%, #009ac6ff 100%);
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    padding:10px 20px 10px 20px;
+    font-size: 20px;
+    margin-top:30px;
+    cursor: pointer;
+}
+.rgb-button:hover{
+    background: 
+    linear-gradient(to right, #2e2d2d, #2e2d2d), 
+    linear-gradient(93.2deg, #20bf55ff 0%, #12bd98ff 57%, #009ac6ff 100%);
+     background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+}
+.container{
+    display: flex;
+    gap: 3rem;
+    position: relative;
+    right: 180px;
+}
+.box{
+    height: 190px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 35px;
+    border-radius: 20px;
+}
+.glass{
+    box-shadow: 0px 0px 32px 0px rgba(149, 148, 205, 0.25);
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+}

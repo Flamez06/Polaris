@@ -76,6 +76,7 @@ def register():
         data = load_data()
         username = request.form['username']
         password = request.form['password']
+        print(username,password)
         if username in data['users']:
             error = 'Username already taken'
             return render_template('register.html', error=error)
@@ -131,7 +132,8 @@ def account():
  
 @app.route('/landing')
 def landing():
-    return render_template('landing.html')
+    
+    return render_template('landing1.html') 
 
 
 @app.route('/delete',methods=['POST'])

@@ -10,45 +10,17 @@
 
 <body>
     <div class="nav-bar">
-        <div id="logo-container" style=" padding: 2rem">
+        <div id="logo-container" style=" padding: 2rem ;">
             <img src="/static/Images/logo.png" width="230" alt="">
         </div>
         {% if 'user' not in session %}
-        <div class="nav-link">
-            <a href="/login">
-                <i class="fa-solid fa-right-to-bracket"></i>
-                Login
-            </a>
-        </div>
-        <div class="nav-link">
-            <a href="/register">
-                <i class="fa-solid fa-clipboard-list"></i>
-                Register
-            </a>
-        </div>
-
+        <button onclick="location.href='/login'" class="nav-button"><i class="fa-solid fa-right-to-bracket"></i>Login</button>
+        <button class="nav-button" style="padding-right:85px" onclick="location.href='/register'"><i class="fa-solid fa-clipboard-list"></i>Register</button>
         {% else %}
-        <div class="nav-link">
-            <a href="/account">
-                <i class="fa-solid fa-user"></i>
-                Profile
-            </a>
-        </div>
-        <div class="nav-link">
-            <a href="/logout">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Log out
-            </a>
-        </div>
-        
+        <button class="nav-button" style="padding-left: 13px;" onclick="location.href='/account'"><i class="fa-solid fa-user"></i>Profile</button>
+        <button class="nav-button" style="padding-left: 25px;" onclick="location.href='/logout'"><i class="fa-solid fa-right-from-bracket"></i>Log out</button>
         {% endif %}
-        <div class="nav-link">
-            <a href="/landing">
-                <i class="fa-regular fa-address-card" style="color: #ffffff;"></i>
-                About
-            </a>
-        </div>
-
+        <button class="nav-button" style="padding-left: 7px;" onclick="location.href='/landing'"><i class="fa-regular fa-address-card" style="color: #ffffff;"></i>About</button>
     </div>
     <div class="posts-container">
 
@@ -111,7 +83,6 @@
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
-
     jQuery(document).ready(function(){
         jQuery('.update_like').bind('click',function(){
             var like=jQuery(this).attr('like')

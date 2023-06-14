@@ -25,10 +25,7 @@
         <div id="logo-container" style="padding: 2rem">
             <img src="/static/Images/logo.png" width="230"  alt="">
         </div>
-        <div class="nav-link">
-            <i class="fa-solid fa-house"></i>
-            <a href="/">Home</a>
-        </div>
+        <button class="nav-button" style="padding-left: 10px;" onclick="location.href='/'"> <i class="fa-solid fa-house"></i>Home</button>
         <!-- FUTURE STUFF -->
         <!-- <div class="nav-link" style="border-bottom: none;">
             <i class="fa-solid fa-star" style="color: #ffffff;"></i>
@@ -37,18 +34,8 @@
                 {{karma}}
             </p>
         </div>  -->
-        <div class="nav-link">
-            <a href="/logout">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Log out
-            </a>
-        </div>
-        <div class="nav-link">
-            <a href="/landing">
-                <i class="fa-regular fa-address-card" style="color: #ffffff;"></i>
-                About
-            </a>
-        </div>
+        <button class="nav-button" style="padding-left: 25px;" onclick="location.href='/logout'"><i class="fa-solid fa-right-from-bracket"></i>Log out</button>
+        <button class="nav-button" style="padding-left: 7px;" onclick="location.href='/landing'"><i class="fa-regular fa-address-card" style="color: #ffffff;"></i>About</button>
          <!-- <div class="badges" style="border-bottom: 1px solid #ffffff38; width: 100%; margin: 0;">   
             {% if karma>=100 %}
             <div style="margin-left: 3rem; margin-bottom: 3rem;"> 
