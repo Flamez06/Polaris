@@ -1,88 +1,33 @@
 {
-    "users": {
-        "flamez06": [
-            "sheesh",
-            "../static/Images/default.png",
-            [
-                "UmxGl0xwiO",
-                "4XABBHgnsx",
-                "jGz2uqJHxe",
-                "c8jzIbL94G",
-                "dzPyPQROGf"
-            ]
-        ],
-        "mavuhs": [
-            "okok",
-            "../static/Images/default2.png",
-            [
-                "NnOMLK9bmH",
-                "Lsg1NL4nRS"
-            ]
-        ],
-        "ggezg": [
-            "ggg",
-            "../static/Images/default.png",
-            []
-        ]
-    },
-    "tweets": {
-        "UmxGl0xwiO": [
-            "flamez06",
-            "fefefef",
-            "../static/Images/default.png",
-            []
-        ],
-        "NnOMLK9bmH": [
-            "mavuhs",
-            "efewdw",
-            "../static/Images/default2.png",
-            []
-        ],
-        "4XABBHgnsx": [
-            "flamez06",
-            "heheg",
-            "../static/Images/default.png",
-            [
-                "flamez06"
-            ]
-        ],
-        "jGz2uqJHxe": [
-            "flamez06",
-            "bitchhf",
-            "../static/Images/default.png",
-            [
-                "flamez06"
-            ]
-        ],
-        "Lsg1NL4nRS": [
-            "mavuhs",
-            "gefefdef",
-            "../static/Images/default2.png",
-            [
-                "mavuhs"
-            ]
-        ],
-        "c8jzIbL94G": [
-            "flamez06",
-            "fefef",
-            "../static/Images/default.png",
-            []
-        ],
-        "IOSeqwk9Gm": [
-            "ggez",
-            "heh",
-            "../static/Images/default.png",
-            [
-                "flamez06"
-            ]
-        ],
-        "dzPyPQROGf": [
-            "flamez06",
-            "fff",
-            "../static/Images/default.png",
-            [
-                "flamez06"
-            ]
-        ]
-    }
+  "users": {
+    "flamez06": [
+      "sheesh",
+      "../static/Images/default.png",
+      [
+        "JZAY8gY9Ya",
+        "2EEvfns3nM",
+        "uUz79gZaYy",
+        "YRswr1JyB9",
+        "0FE6p9kjj7",
+        "PogneDS5Ew",
+        "1jfqu3cmqk"
+      ]
+    ],
+    "ggez": ["hehe", "../static/Images/default.png", ["GklRDOoufI"]]
+  },
+  "tweets": {
+    "JZAY8gY9Ya": ["flamez06", "sheesh", "../static/Images/default.png", []],
+    "GklRDOoufI": ["ggez", "hehe", "../static/Images/default.png", ["ggez"]],
+    "2EEvfns3nM": ["flamez06", "vvddc\r\n", "../static/Images/default.png", []],
+    "uUz79gZaYy": ["flamez06", "ttef", "../static/Images/default.png", []],
+    "YRswr1JyB9": ["flamez06", "gg", "../static/Images/default.png", []],
+    "0FE6p9kjj7": ["flamez06", "hehe", "../static/Images/default.png", []],
+    "PogneDS5Ew": ["flamez06", "jresfd", "../static/Images/default.png", []],
+    "1jfqu3cmqk": [
+      "flamez06",
+      "fsadwvfecdwwd",
+      "../static/Images/default.png",
+      []
+    ]
+  }
 }

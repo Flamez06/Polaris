@@ -28,7 +28,7 @@
         <div class="create-post">
             <form action="/post" method="POST">
                 <div class="create-post-box">
-                    <img src="{{ pfp }}" alt="">
+                    <img src="/static/Images/default.png" alt="">
                     <textarea name="tweet" rows="3" cols="50" required placeholder="type something here"></textarea>
                 </div>
                 <div class="create-post-button">
@@ -50,7 +50,7 @@
                 {% endif %}
             </div>
             <div class="post-author">
-                <img class="post-avatar" src="{{ tweets[x][2] }}" alt="">
+                <img class="post-avatar" src="/static/Images/default.png" alt="">
                 {% if user==tweets[x][0] %}
                 <div class="post-user"> {{ tweets[x][0] }} </a></div>
                 {% else %}
@@ -62,7 +62,7 @@
                 <div class="post-like">
                         <button type="button" class="update_like" like="{{ tweet_keys[x] }}" value="❤️">
                             {% if 'user' in session %}
-                                {% if user in tweets[x][3] %}
+                                {% if user in tweets[x][2] %}
                                 <i id="licon{{tweet_keys[x]}}" class="fa-solid fa-heart"></i>
                                 {% else %}
                                 <i id="licon{{tweet_keys[x]}}" class="fa-regular fa-heart"></i>

@@ -64,7 +64,7 @@ body{
 }
 .rgb-button:hover{
     background: 
-    linear-gradient(to right, #2e2d2d, #2e2d2d), 
+    linear-gradient(to right, #393838, #393838), 
     linear-gradient(93.2deg, #20bf55ff 0%, #12bd98ff 57%, #009ac6ff 100%);
      background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
@@ -82,6 +82,7 @@ body{
     flex-direction: column;
     justify-content: center;
     padding-left: 35px;
+    padding-right: 35px;
     border-radius: 20px;
 }
 .glass{

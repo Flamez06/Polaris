@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/52a4234966.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/index1.css">
+</head>
+<body>
+    <div class="nav-bar">
+        <img src="/static/Images/Ellipse 3.png" width="100px" style="margin-top: 100px;" height="100px" alt="">
+        <button class="nav-button"><i class="fa-solid fa-house icon" style="color: #ffffff;"></i>Home</button>
+        <button class="nav-button"><i class="fa-solid fa-user icon" style="color: #ffffff;"></i>Profile</button>
+        {% if 'user' in session %}
+        <button class="nav-button" style="margin-left: 20px;" onclick="location.href='/logout'"><i class="fa-solid fa-right-from-bracket icon" style="color: #ffffff;"></i>Logout</button>
+        {% else %}
+        <button class="nav-button" onclick="location.href='/login'"><i class="fa-solid fa-right-to-bracket icon" style="color: #ffffff;"></i>Login</button>
+        {% endif %}
+        <button class="nav-button" onclick="location.href='/landing'"><i class="fa-solid fa-book icon" style="color: #ffffff;"></i>About</button>
+    </div>
+    <div class="main-container">
+        {% if 'user' in session %}
+        <div class="post-box glass" style="margin-top: 80px;display: flex;">
+            <img src="/static/Images/default2.png" class="rgb-button user-pfp" width="60px" height="55px" alt="">
+            <form action="/post" method="post">
+                <textarea name="tweet" rows="3" cols="40" required placeholder="Something is happening?!"></textarea>
+                <button class="rgb-button" style="font-weight:600;margin-top: 0px;" id="post"><i class="fa-regular fa-paper-plane" style="color: #ffffff;margin-right: 15px;"></i>Post</button>
+            </form>
+        </div>
+        <div style="margin: 40px 0px 25px 25px;"><h1 class="rgbtext" style="font-size:45px;display: inline;">Your Feed</h1></div>
+        {% else %} 
+        <div style="margin: 40px 0px 25px 25px;"><h1 class="rgbtext" style="font-size:40px;display: inline;">Want to make a post? Log in.</h1></div>
+        {% endif %}
+        {% for x in range(tweets|length) %}
+        <div class="tweets">
+            <div class="post-box glass">
+                <div id="user">
+                    <img class="rgb-button user-pfp" src="/static/Images/default2.png" width="55px" height="55px" alt="">
+                    <div style="margin-left: 20px;">
+                        <!-- username -->
+                        <p style="font-size: 25px;font-weight: 600;">{{ tweets[x][0] }}</p>
+                        <!-- date -->
+                        <p style="font-size: 15px;color:#6B6C6C;">19:08,Sunday,28th Feb 2023</p>
+                    </div>
+                </div>
+                <!-- post content -->
+                <div style="font-size: 23px;word-wrap: break-word;color: #9d9d9d;">{{ tweets[x][1] }}</div>
+                <div style="display:flex;justify-content: space-between;">
+                <button class="rgb-button update_like" style="font-weight: 600;display: flex;" like="{{ tweet_keys[x] }}">
+                    {% if 'user' in session %}
+                        {% if user in tweets[x][2] %}
+                        <i id="licon{{tweet_keys[x]}}" class="fa-solid fa-heart" style="margin-right: 15px;"></i><p id="lb{{ tweet_keys[x] }}">{{ tweets[x][2]|length }}</p>
+                        {% else %}
+                        <i id="licon{{tweet_keys[x]}}" class="fa-regular fa-heart" style="margin-right: 15px;"></i> <p id="lb{{ tweet_keys[x] }}">{{ tweets[x][2]|length }}</p>
+                        {% endif %}
+                     {% else %}
+                        <i class="fa-regular fa-heart" style="margin-right: 15px;"></i><p id="lb{{ tweet_keys[x] }}">{{ tweets[x][2]|length }}</p>
+                    {% endif %}
+                </button>
+                {% if 'user' in session and tweets[x][0]==user %}
+                <form action="/delete" method="post">
+                <button class="rgb-button"  style="font-weight: 600;" name="delmsg" value="{{ tweet_keys[x] }}">
+                    <i class="fa-solid fa-trash" style="color: #ffffff; margin-right: 15px;"></i> Delete
+                </button>
+                </form>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+</body>
+<script>
+    jQuery(document).ready(function(){
+        jQuery('.update_like').bind('click',function(){
+            var like=jQuery(this).attr('like')
+            req=jQuery.ajax({
+                url:"/",
+                type:"POST",
+                data:{id:like}
+            })
+            req.done(function(data){
+                jQuery('#lb'+like).text(data.count)
+                const icon=document.querySelector('#licon'+like)
+                if(icon.className=="fa-solid fa-heart"){
+                    icon.className="fa-regular fa-heart"
+                }
+                else{
+                    icon.className="fa-solid fa-heart"
+                }   
+            })
+        })
+    })
+
+</script>
+</html>

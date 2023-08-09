@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&family=Montserrat:wght@500;600;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Montserrat;
+    color: white;
+}
+
+body{
+    background: url(/static/Images/Frame\ 2.png);
+    background-size: cover;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1.3fr 3fr;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.nav-bar{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border-right: solid rgba(255, 255, 255, 0.361) 1px; */
+}
+
+.main-container{
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.nav-button{
+    margin-top: 40px;
+    background:none;
+    border:none;
+    padding: 10px 20px 10px 20px;
+    font-size: 35px;
+    font-weight: 600;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.nav-button:hover{
+    transform: scale(1.15);
+}
+
+.icon{
+    margin-right: 20px;
+}
+
+.glass{
+    box-shadow: 0px 0px 32px 0px rgba(149, 148, 205, 0.25);
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+}
+
+.post-box{
+    width: 700px;
+    border-radius: 20px;
+    padding: 40px;
+    margin-left: 25px;
+    margin-top: 30px;
+}
+textarea{
+    outline: none;
+    border: none;
+    resize: none;
+    height: 6rem;
+    padding: 20px;
+    color: inherit;
+    font-family: inherit;
+    font-size: 23px;
+    width: calc(100% - 40px);
+    background: transparent;
+}
+.rgb-button{
+    border: 3px solid transparent;
+    border-radius: 15px;
+    background: 
+      linear-gradient(to right, #2b2a2a, #2b2a2a), 
+      linear-gradient(93.2deg, #20bf55ff 0%, #12bd98ff 57%, #009ac6ff 100%);
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    padding:15px 20px 15px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.rgb-button:hover{
+    background: 
+    linear-gradient(to right, #393838, #393838), 
+    linear-gradient(93.2deg, #20bf55ff 0%, #12bd98ff 57%, #009ac6ff 100%);
+     background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+}
+
+#post{
+    position: relative;
+    left: 520px;
+    top: 5px;
+}
+
+.rgbtext{
+    background-image: linear-gradient(93.2deg, #20bf55ff 0%, #12bd98ff 57%, #009ac6ff 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.user-pfp{
+    padding: 0px;
+    border-radius: 100px;
+    cursor: auto;
+    margin-top: 0px;
+}
+
+#user{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+

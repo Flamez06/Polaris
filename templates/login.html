@@ -6,23 +6,20 @@
 </head>
 <body>
     <div class="container">
+    <h1 style="font-size: 50px;" class="rgbtext">Welcome back!</h1><br>
+    <p style="font-weight: 600; font-size: 21px;">We are so excited to see you back!</p><br><br>
     <div class="form">
-        <h1>Welcome back!</h1>
-        <p>We are so excited to see you back!</p>
         <form method="POST" action="{{ url_for('login') }}">
-            <input type="text" class="input" name="username" autocomplete="off" required placeholder="Enter username">
-            <input type="password" name="password" class="input" required placeholder="Enter the password"><br><br>
+            <input type="text" class="input text" name="username" autocomplete="off" required placeholder="Username"><br><br>
+            <input type="password" name="password" class="input text" required placeholder="Password"><br><br>
             <input type="checkbox" name="rem" value="remember"> 
-            <label class="input" for="rem">Remember me</label>
-            <input type="submit" id="login" value="Log in">
+            <label for="rem" id="rem-label" class="text">Remember me</label><br><br>
+            <input type="submit" class="text" id="login" value="Log in">
         </form>
         {% if error %}
-            <p style="color: red; margin-top: 20px;">{{ error }}</p>
+            <p class="text" style="color: rgb(212, 104, 104); margin-top: 20px;">{{ error }}</p>
         {% endif %}
-        <p style="margin-top: 15px;">Don't have an account? <a href="/register" style="color: rgb(132, 132, 183);">Register</a> </p>
-    </div>
-    <div class="img">
-        <img src="/static/Images/Ellipse 3.png" width="125" style="transform: scaleX(-1);" alt="">
+        <p style="margin-top: 15px;" class="text">Don't have an account? <a href="/register" style="color: rgb(132, 132, 183);">Register</a> </p>
     </div>
     </div>
 </body>

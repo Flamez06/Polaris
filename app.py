@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for,jsonify,session
 import json, random
 from datetime import timedelta
+import db
 
 app = Flask(__name__)
 app.secret_key="hehfbiwdqnsci"
@@ -37,51 +38,43 @@ def random_string():
 
 @app.route('/post',methods=['POST'])
 def post():
-     data=load_data()
-     request_load=request.form
+     tweet=request.form['tweet']
      USERNAME=session["user"]
-     tweet = request_load['tweet']
      id = random_string()
-     data['tweets'][id] = [USERNAME, tweet, data['users'][USERNAME][1], []]
-     data['users'][USERNAME][2].append(id)
-     save_data(data)
+     print(tweet,id,USERNAME)
+     db.post(tweet,id,USERNAME)
      return redirect(url_for('home'))
 
-
-# Home page - display all tweets
+# Home page - display all tweetscl
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    data = load_data()
+    data=db.tweets()
     if request.method == 'POST':
         id = request.form['id']
         USERNAME=session["user"]
-        if not USERNAME in data['tweets'][id][3]:
-            data['tweets'][id][3].append(USERNAME)
-        else:
-            data['tweets'][id][3].remove(USERNAME)
-        
-        save_data(data)
-        return jsonify({ 'count':len(data['tweets'][id][3])  })
+        ldata=db.like_data(id)
+        if USERNAME not in ldata[2]:ldata[2].append(USERNAME)
+        else:ldata[2].remove(USERNAME)
+        db.like(id,ldata)
+        return jsonify({'count':len(ldata[2])})
 
     if "user" in session:
         USERNAME=session["user"]
-        return render_template('index.html', tweet_keys=list(data['tweets'].keys())[::-1], tweets=list(data['tweets'].values())[::-1],user=USERNAME, pfp=data['users'][USERNAME][1])
+        return render_template('index1.html', tweet_keys=data[1], tweets=data[0],user=USERNAME)
     else:
-        return render_template('index.html', tweet_keys=list(data['tweets'].keys())[::-1], tweets=list(data['tweets'].values())[::-1])
+        return render_template('index1.html', tweet_keys=data[1],tweets=data[0])
 
 # User registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        data = load_data()
+        data = db.login()
         username = request.form['username']
         password = request.form['password']
-        print(username,password)
-        if username in data['users']:
+        if (username, ) in data:
             error = 'Username already taken'
             return render_template('register.html', error=error)
-        data['users'][username] = [password,"../static/Images/default.png", []]
-        save_data(data)
+        db.register(username,password)
         return redirect(url_for('login'))
     return render_template('register.html')
 
@@ -90,10 +83,10 @@ def register():
 def login():
     if 'user' not in session:
         if request.method == 'POST':
-            data = load_data()
+            data = db.login()
             USERNAME = request.form['username']
             password = request.form['password']
-            if USERNAME not in data['users'] or data["users"][USERNAME][0] != password:
+            if (USERNAME, ) not in data or data[(USERNAME, )][0] != password:
                 error = 'Invalid credentials'
                 return render_template('login.html', error=error)
             try :
@@ -138,18 +131,9 @@ def landing():
 
 @app.route('/delete',methods=['POST'])
 def delete():
-        USERNAME=session['user']
-        d=list((request.form).keys())[0]
-        x=d.split()[1]
-        d=d.split()[0]
-        data=load_data()
-        del data['tweets'][d]
-        data['users'][USERNAME][2].remove(d)
-        save_data(data)
-        if x=="prof":
-            return redirect(url_for('account'))
-        else:
-            return redirect(url_for('home'))
+        id=request.form['delmsg']
+        db.delete(id)
+        return redirect(url_for('home'))
 
 @app.route('/profile/<user>', methods=['GET', 'POST'])
 def profile(user):
